@@ -4,10 +4,11 @@ A self-hosted browser-game library deployed from this GitHub repository with Clo
 
 ## Current catalogue
 
-- **Geometry Dash (Scratch)** — game files are stored in `games/geometry-dash/`. This is a third-party Scratch/TurboWarp fan game, not the official commercial Geometry Dash game. The upstream MIT licence and creator attribution are included beside the game.
-- **Sound Buttons Space** — the one explicitly requested external destination: https://soundbuttonsspace.com/en/categories.
+- **Geometry Dash (Scratch)** — a self-hosted Scratch/TurboWarp fan game in `games/geometry-dash/`, with its MIT licence and attribution.
+- **14 Papa's restaurant games** — the official Standard Version SWF downloads from Flipline's “Free Games for your Site” programme, hosted locally with the self-hosted Ruffle player. Each folder contains its source/hosting notice.
+- **Sound Buttons Space** — https://soundbuttonsspace.com/en/categories (the requested sound-button categories destination).
 
-The unrelated generic mini-games and their auto-import workflow have been removed. Games are not listed as playable on this site until their files are actually in the repository.
+Only the games listed in the catalogue are displayed. The unrelated generic mini-games and the old bulk-import workflow have been removed.
 
 ## Add your own games
 
