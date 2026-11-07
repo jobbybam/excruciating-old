@@ -2725,7 +2725,7 @@
       "source_url": "https://github.com/Zumwaltboi68/3kh0-assets-net/tree/main/papasburgeria",
       "license": "Varies by game",
       "attribution": "3kh0 archive; see the source repository for original credits and game-specific terms.",
-      "published": true
+      "published": false
     },
     {
       "slug": "papaspizzaria",
@@ -2737,7 +2737,7 @@
       "source_url": "https://github.com/Zumwaltboi68/3kh0-assets-net/tree/main/papaspizzaria",
       "license": "Varies by game",
       "attribution": "3kh0 archive; see the source repository for original credits and game-specific terms.",
-      "published": true
+      "published": false
     },
     {
       "slug": "paperio2",
@@ -4561,7 +4561,7 @@
       "source_url": "https://poki.com/en/papas",
       "license": "External publisher/distributor-hosted games; not redistributed",
       "attribution": "Papa's games by Flipline Studios; accessed through Poki.",
-      "published": true
+      "published": false
     },
     {
       "slug": "geometry-dash-web",
@@ -4585,6 +4585,210 @@
       "source_url": "https://www.arkadium.com/games/ballistic/",
       "license": "External publisher-hosted game; not redistributed",
       "attribution": "Ballistic by Arkadium; played on Arkadium's official game page.",
+      "published": true
+    },
+    {
+      "slug": "papas-freezeria",
+      "title": "Papa's Freezeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-freezeria",
+      "source_url": "https://poki.com/en/g/papas-freezeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-sushiria",
+      "title": "Papa's Sushiria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-sushiria",
+      "source_url": "https://poki.com/en/g/papas-sushiria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-scooperia",
+      "title": "Papa's Scooperia",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-scooperia",
+      "source_url": "https://poki.com/en/g/papas-scooperia",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-wingeria",
+      "title": "Papa's Wingeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-wingeria",
+      "source_url": "https://poki.com/en/g/papas-wingeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-pastaria",
+      "title": "Papa's Pastaria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-pastaria",
+      "source_url": "https://poki.com/en/g/papas-pastaria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-pancakeria",
+      "title": "Papa's Pancakeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-pancakeria",
+      "source_url": "https://poki.com/en/g/papas-pancakeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-taco-mia",
+      "title": "Papa's Taco Mia",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-taco-mia",
+      "source_url": "https://poki.com/en/g/papas-taco-mia",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-cheeseria",
+      "title": "Papa's Cheeseria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-cheeseria",
+      "source_url": "https://poki.com/en/g/papas-cheeseria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-cupcakeria",
+      "title": "Papa's Cupcakeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-cupcakeria",
+      "source_url": "https://poki.com/en/g/papas-cupcakeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-hotdoggeria",
+      "title": "Papa's Hotdoggeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-hotdoggeria",
+      "source_url": "https://poki.com/en/g/papas-hotdoggeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-burgeria",
+      "title": "Papa's Burgeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-burgeria",
+      "source_url": "https://poki.com/en/g/papas-burgeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papa-louie-2",
+      "title": "Papa Louie 2",
+      "category": "Platformer",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papa-louie-2",
+      "source_url": "https://poki.com/en/g/papa-louie-2",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-bakeria",
+      "title": "Papa's Bakeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-bakeria",
+      "source_url": "https://poki.com/en/g/papas-bakeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-donuteria",
+      "title": "Papa's Donuteria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-donuteria",
+      "source_url": "https://poki.com/en/g/papas-donuteria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papa-louie-3",
+      "title": "Papa Louie 3",
+      "category": "Platformer",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papa-louie-3",
+      "source_url": "https://poki.com/en/g/papa-louie-3",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papas-pizzeria",
+      "title": "Papa's Pizzeria",
+      "category": "Cooking",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papas-pizzeria",
+      "source_url": "https://poki.com/en/g/papas-pizzeria",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
+      "published": true
+    },
+    {
+      "slug": "papa-louie-when-pizzas-attack",
+      "title": "Papa Louie: When Pizzas Attack",
+      "category": "Platformer",
+      "thumbnail": "",
+      "description": "Play the Flipline Studios game through Poki. This is an external hosted version, not a copy stored in this repository.",
+      "url": "https://poki.com/en/g/papa-louie-when-pizzas-attack",
+      "source_url": "https://poki.com/en/g/papa-louie-when-pizzas-attack",
+      "license": "External publisher/distributor-hosted game; not redistributed",
+      "attribution": "Game by Flipline Studios; playable via Poki.",
       "published": true
     }
   ]
