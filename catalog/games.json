@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "source": "Self-hosted Scratch/TurboWarp fan game, 14 official Flipline standard downloads authorized for site hosting, and the specifically requested Sound Buttons Space destination.",
+  "version": 7,
+  "source": "Self-hosted Scratch/TurboWarp fan game, 14 official Flipline standard downloads authorized for site hosting, and the specifically requested Sound Buttons Space destination. Official Flipline game icons are included alongside the hosted Papa's games.",
   "attribution": "Each title retains its source-specific attribution and licence/hosting notice.",
   "games": [
     {
@@ -35,7 +35,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-scooperia/thumbnail.jpg"
     },
     {
       "slug": "papas-sushiria",
@@ -46,7 +47,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-sushiria/thumbnail.jpg"
     },
     {
       "slug": "papas-bakeria",
@@ -57,7 +59,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-bakeria/thumbnail.jpg"
     },
     {
       "slug": "papas-cheeseria",
@@ -68,7 +71,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-cheeseria/thumbnail.jpg"
     },
     {
       "slug": "papas-donuteria",
@@ -79,7 +83,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-donuteria/thumbnail.jpg"
     },
     {
       "slug": "papas-pastaria",
@@ -90,7 +95,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-pastaria/thumbnail.jpg"
     },
     {
       "slug": "papas-cupcakeria",
@@ -101,7 +107,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-cupcakeria/thumbnail.jpg"
     },
     {
       "slug": "papas-hot-doggeria",
@@ -112,7 +119,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-hot-doggeria/thumbnail.jpg"
     },
     {
       "slug": "papas-wingeria",
@@ -123,7 +131,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-wingeria/thumbnail.jpg"
     },
     {
       "slug": "papas-pancakeria",
@@ -134,7 +143,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-pancakeria/thumbnail.jpg"
     },
     {
       "slug": "papas-freezeria",
@@ -145,7 +155,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-freezeria/thumbnail.jpg"
     },
     {
       "slug": "papas-taco-mia",
@@ -156,7 +167,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-taco-mia/thumbnail.jpg"
     },
     {
       "slug": "papas-burgeria",
@@ -167,7 +179,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-burgeria/thumbnail.jpg"
     },
     {
       "slug": "papas-pizzeria",
@@ -178,7 +191,8 @@
       "source_url": "https://www.flipline.com/freegames.html",
       "license": "Flipline Studios — Free Games for your Site hosting permission",
       "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/papas-pizzeria/thumbnail.jpg"
     },
     {
       "slug": "sound-buttons-space",
