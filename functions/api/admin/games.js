@@ -2,7 +2,7 @@ import { json, requireAdmin } from "../../_lib/auth.js";
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export async function onRequestGet({ request, env }) {
   const denied = await requireAdmin(request, env); if (denied) return denied;
-  const rows = await env.DB.prepare("SELECT slug,title,category,thumbnail,description,source_url,license,attribution,published,created_at FROM games ORDER BY title COLLATE NOCASE").all();
+  const rows = await env.DB.prepare("SELECT slug,title,category,thumbnail,description,source_url,license,attribution,published,created_at FROM games WHERE source_url IS NULL OR source_url NOT LIKE '%mashukui/web-games%' ORDER BY title COLLATE NOCASE").all();
   return json({ games: rows.results || [] });
 }
 export async function onRequestPost({ request, env }) {
