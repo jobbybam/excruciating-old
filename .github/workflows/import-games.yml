@@ -52,7 +52,7 @@ jobs:
           mkdir -p /tmp/ruffle games/ruffle
           curl --fail --location --retry 3 https://github.com/ruffle-rs/ruffle/releases/download/v0.7.1/ruffle-0.7.1-web-selfhosted.zip --output /tmp/ruffle/ruffle.zip
           unzip -q /tmp/ruffle/ruffle.zip -d /tmp/ruffle/extracted
-python3 - <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
           import shutil
           root = Path("/tmp/ruffle/extracted")
