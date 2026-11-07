@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "source": "Self-hosted Scratch/TurboWarp fan game, 14 official Flipline standard downloads authorized for site hosting, and the specifically requested Sound Buttons Space destination.",
   "attribution": "Each title retains its source-specific attribution and licence/hosting notice.",
   "games": [
@@ -12,6 +12,18 @@
       "source_url": "https://github.com/AJ2130/Geometry-dash-",
       "license": "MIT",
       "attribution": "Ajaykrishna Ramesh (AJ2130). See games/geometry-dash/LICENSE and ATTRIBUTION.md.",
+      "published": true
+    },
+    {
+      "slug": "undertale",
+      "title": "Undertale",
+      "category": "Adventure",
+      "description": "Locally hosted Undertale WebPort build from the files in this repository.",
+      "url": "/games/undertale/index.html",
+      "thumbnail": "/games/undertale/favicon.png",
+      "source_url": "https://github.com/Mollomm1/test",
+      "license": "Proprietary game assets; redistribution status not verified",
+      "attribution": "Undertale © Toby Fox. This local webport is unofficial.",
       "published": true
     },
     {
