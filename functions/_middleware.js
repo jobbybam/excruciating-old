@@ -9,7 +9,7 @@ export async function onRequest({ request, next }) {
   const gameRoute = path.startsWith("/games/");
   const policy = gameRoute
     ? "default-src 'self' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https: blob:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; connect-src 'self' data: blob: https: wss:; media-src 'self' data: blob: https:; font-src 'self' data: https:; worker-src 'self' blob:; frame-src 'self' blob: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
-    : "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'";
+    : "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; connect-src 'self'; frame-src 'self' https://raw.githack.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'";
   headers.set("Content-Security-Policy", policy);
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 }
