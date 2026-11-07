@@ -87,3 +87,24 @@ kbd{font-size:11px;border:1px solid #333;border-radius:4px;padding:2px 6px;color
 .admin-chat-list .chat-message p{flex:1;margin:0}
 footer{border-top:1px solid var(--line);padding:22px clamp(20px,5vw,76px);font-size:11px;color:#666}
 @media(max-width:620px){.player-page{padding:12px 10px 28px}.game-frame-wrap{height:calc(100dvh - 145px);aspect-ratio:auto;min-height:0;max-height:none}.topbar{height:64px;gap:12px}.wordmark{font-size:17px}.search-wrap{width:auto;flex:1}.shell{padding-top:22px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 13px}.player-toolbar{flex-wrap:wrap}.player-toolbar h2{flex:1}.toolbar-button{padding:8px}.toolbar-button span{display:none}.game-frame-wrap{aspect-ratio:4/3;min-height:240px}.admin-card{padding:16px}.form-grid{grid-template-columns:1fr}.admin-chat-list .chat-message{align-items:flex-start;flex-wrap:wrap}.admin-chat-list .chat-message p{flex-basis:100%;order:2}.chat-panel{right:12px;bottom:70px}}
+
+/* Mobile gameplay and safe-area refinements */
+.game-frame-wrap{position:relative;isolation:isolate;overscroll-behavior:contain;}
+#game-frame{display:block;touch-action:pan-x pan-y;}
+.game-frame-wrap:fullscreen{width:100vw;height:100dvh;max-height:none;min-height:0;border:0;border-radius:0;background:#000;}
+.game-frame-wrap:fullscreen #game-frame{width:100%;height:100%;}
+@media(max-width:620px){
+  .player-page{padding:calc(8px + env(safe-area-inset-top)) 10px calc(10px + env(safe-area-inset-bottom));}
+  .player-toolbar{gap:7px;margin-bottom:10px;}
+  .player-toolbar h2{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .player-actions{gap:5px;}
+  .toolbar-button{min-height:40px;padding:8px 10px;touch-action:manipulation;}
+  .game-frame-wrap{height:calc(100dvh - 115px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:220px;max-height:none;aspect-ratio:auto;}
+  #game-frame{width:100%;height:100%;}
+  .chat-toggle,.category,.game-card,.primary-button{touch-action:manipulation;}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .player-page{padding:4px 8px;}
+  .player-toolbar{margin-bottom:5px;}
+  .game-frame-wrap{height:calc(100dvh - 54px);min-height:0;}
+}
