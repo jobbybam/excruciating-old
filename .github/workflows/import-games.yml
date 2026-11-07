@@ -57,14 +57,18 @@ jobs:
           import shutil
           root = Path("/tmp/ruffle/extracted")
           out = Path("games/ruffle")
-          for filename in ("ruffle.js", "ruffle.wasm"):
-              matches = list(root.rglob(filename))
-              if not matches:
-                  raise SystemExit(f"Missing {filename} from Ruffle web package")
-              shutil.copy2(matches[0], out / filename)
+          js_matches = list(root.rglob("ruffle.js"))
+          wasm_matches = list(root.rglob("*.wasm"))
+          print("Ruffle WASM files:", [p.name for p in wasm_matches])
+          if not js_matches:
+              raise SystemExit("Missing ruffle.js from Ruffle web package")
+          if not wasm_matches:
+              raise SystemExit("No WASM runtime found in Ruffle web package")
+          shutil.copy2(js_matches[0], out / "ruffle.js")
+          for wasm in wasm_matches:
+              shutil.copy2(wasm, out / wasm.name)
           PY
           test -s games/ruffle/ruffle.js
-          test -s games/ruffle/ruffle.wasm
           curl --fail --location --retry 3 https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md --output games/ruffle/LICENSE.md
 
       - name: Import the 14 officially downloadable Papa's games
