@@ -3774,13 +3774,13 @@
     {
       "slug": "subway-surfers",
       "title": "Subway Surfers",
-      "category": "Racing",
-      "thumbnail": "https://raw.githack.com/Zumwaltboi68/3kh0-assets-net/main/subway-surfers/img/splash.jpg",
-      "description": "",
-      "url": "https://raw.githack.com/Zumwaltboi68/3kh0-assets-net/main/subway-surfers/index.html",
-      "source_url": "https://github.com/Zumwaltboi68/3kh0-assets-net/tree/main/subway-surfers",
-      "license": "Varies by game",
-      "attribution": "3kh0 archive; see the source repository for original credits and game-specific terms.",
+      "category": "Arcade",
+      "thumbnail": "",
+      "description": "Official browser version hosted by Poki; swipe controls on mobile.",
+      "url": "https://poki.com/en/g/subway-surfers",
+      "source_url": "https://poki.com/en/g/subway-surfers",
+      "license": "External publisher-hosted game; not redistributed",
+      "attribution": "Subway Surfers by SYBO; playable on Poki.",
       "published": true
     },
     {
@@ -4505,10 +4505,10 @@
     },
     {
       "slug": "brick-breaker",
-      "title": "Brick Breaker",
+      "title": "Neon Brick Breaker",
       "category": "Arcade",
       "thumbnail": "",
-      "description": "Neon brick-breaking arcade game. Mouse, keyboard and touchscreen controls.",
+      "description": "A neon-style classic brick-breaker with mouse, keyboard and touchscreen controls.",
       "url": "/games/brick-breaker/index.html",
       "source_url": "https://github.com/samecchang/BrickBreaker",
       "license": "MIT",
@@ -4556,7 +4556,7 @@
       "title": "Papa's Games Collection",
       "category": "Cooking",
       "thumbnail": "",
-      "description": "Browse the Papa's series on Poki, including Freezeria, Scooperia, Sushiria, Pizzeria and more.",
+      "description": "17 Papa's games from Flipline Studios, available to play through Poki. Individual titles support touch on supported devices.",
       "url": "https://poki.com/en/papas",
       "source_url": "https://poki.com/en/papas",
       "license": "External publisher/distributor-hosted games; not redistributed",
@@ -4573,6 +4573,18 @@
       "source_url": "https://playgdweb.itch.io/geometry-dash",
       "license": "External fan port; not redistributed",
       "attribution": "Unofficial web port by GD; Geometry Dash belongs to RobTop Games.",
+      "published": true
+    },
+    {
+      "slug": "ballistic",
+      "title": "Ballistic",
+      "category": "Arcade",
+      "thumbnail": "",
+      "description": "Arkadium's brick-breaking ball shooter. Aim by dragging and release to fire; supports touch and mouse.",
+      "url": "https://www.arkadium.com/games/ballistic/",
+      "source_url": "https://www.arkadium.com/games/ballistic/",
+      "license": "External publisher-hosted game; not redistributed",
+      "attribution": "Ballistic by Arkadium; played on Arkadium's official game page.",
       "published": true
     }
   ]
