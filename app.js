@@ -41,12 +41,13 @@ function render(){
     if(game.thumbnail){const img=document.createElement("img");img.src=game.thumbnail;img.alt="";img.loading="lazy";img.onerror=()=>{const fallback=document.createElement("span");fallback.className="game-placeholder";fallback.textContent=(game.title||"?").slice(0,1).toUpperCase();thumb.replaceChildren(fallback);};thumb.append(img);}
     else{const fallback=document.createElement("span");fallback.className="game-placeholder";fallback.textContent=(game.title||"?").slice(0,1).toUpperCase();thumb.append(fallback);}
     const title=document.createElement("span");title.className="game-name";title.textContent=game.title;
-    const category=document.createElement("span");category.className="game-category";category.textContent=game.category||"";
+    const category=document.createElement("span");category.className="game-category";category.textContent=(game.category||"")+(game.external?" · "+(game.external_label||"External"):"");
     button.append(thumb,title,category);grid.append(button);
   }
 }
 function openGame(game){
   if(!game||!game.slug)return;
+  if(game.external&&game.url){window.open(game.url,"_blank","noopener,noreferrer");return;}
   home.hidden=true;player.hidden=false;$("#search-wrap").hidden=true;$("#chat-toggle").hidden=true;playerTitle.textContent=game.title;
   placeholder.hidden=true;frame.hidden=false;frame.dataset.gameUrl=game.url||game.launch_url||("/games/"+encodeURIComponent(game.slug)+"/index.html");frame.src=frame.dataset.gameUrl;
   history.pushState({game:game.slug},"","#play/"+encodeURIComponent(game.slug));
