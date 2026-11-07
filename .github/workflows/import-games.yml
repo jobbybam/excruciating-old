@@ -1,4 +1,4 @@
-name: Import Scratch Geometry Dash files
+name: Import requested self-hosted games
 
 on:
   push:
@@ -11,12 +11,13 @@ permissions:
   contents: write
 
 jobs:
-  import-scratch-game:
+  import-games:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      - name: Import the Scratch/TurboWarp game and its licence
+
+      - name: Import the Scratch/TurboWarp Geometry Dash game
         shell: bash
         run: |
           set -euo pipefail
@@ -32,22 +33,116 @@ jobs:
           if count:
               entry.write_text(html, encoding="utf-8")
           if len(html) < 100000:
-              raise SystemExit("Imported HTML is unexpectedly small; refusing to commit.")
+              raise SystemExit("Geometry Dash HTML import is unexpectedly small.")
           Path("games/geometry-dash/ATTRIBUTION.md").write_text(
               "# Geometry Dash — Scratch/TurboWarp fan game\n\n"
-              "This is a third-party Scratch/TurboWarp-made fan game exported as a self-contained HTML file. "
-              "It is **not** the official Geometry Dash game and is not affiliated with RobTop Games.\n\n"
-              "- Upstream repository: https://github.com/AJ2130/Geometry-dash-\n"
-              "- Upstream author: Ajaykrishna Ramesh (AJ2130)\n"
-              "- Code licence: MIT; the original licence text is in this folder's LICENSE file.\n"
-              "- Game engine/export: Scratch / TurboWarp.\n",
+              "Third-party fan game, not the official RobTop game.\n\n"
+              "- Upstream: https://github.com/AJ2130/Geometry-dash-\n"
+              "- Author: Ajaykrishna Ramesh (AJ2130)\n"
+              "- Code licence: MIT; see LICENSE.\n"
+              "- Engine/export: Scratch / TurboWarp.\n",
               encoding="utf-8",
           )
           PY
-      - name: Commit the game files
+
+      - name: Download Ruffle web player (self-hosted)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ruffle games/ruffle
+          curl --fail --location --retry 3 https://github.com/ruffle-rs/ruffle/releases/download/v0.7.1/ruffle-0.7.1-web-selfhosted.zip --output /tmp/ruffle/ruffle.zip
+          unzip -q /tmp/ruffle/ruffle.zip -d /tmp/ruffle/extracted
+          find /tmp/ruffle/extracted -type f \\( -name 'ruffle.js' -o -name 'ruffle.wasm' \\) -exec cp {} games/ruffle/ \;
+          test -s games/ruffle/ruffle.js
+          test -s games/ruffle/ruffle.wasm
+          curl --fail --location --retry 3 https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md --output games/ruffle/LICENSE.md
+
+      - name: Import the 14 officially downloadable Papa's games
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          games = [{"slug":"papas-scooperia","title":"Papa's Scooperia","swf":"papasscooperia_v102.swf","folder":"papasscooperia"},{"slug":"papas-sushiria","title":"Papa's Sushiria","swf":"papassushiria_101.swf","folder":"papassushiria"},{"slug":"papas-bakeria","title":"Papa's Bakeria","swf":"papasbakeria_101.swf","folder":"papasbakeria"},{"slug":"papas-cheeseria","title":"Papa's Cheeseria","swf":"papascheeseria_102.swf","folder":"papascheeseria"},{"slug":"papas-donuteria","title":"Papa's Donuteria","swf":"papasdonuteria_102.swf","folder":"papasdonuteria"},{"slug":"papas-pastaria","title":"Papa's Pastaria","swf":"papaspastaria_v2.swf","folder":"papaspastaria"},{"slug":"papas-cupcakeria","title":"Papa's Cupcakeria","swf":"papascupcakeria_v2.swf","folder":"papascupcakeria"},{"slug":"papas-hot-doggeria","title":"Papa's Hot Doggeria","swf":"papashotdoggeria_v2.swf","folder":"papashotdoggeria"},{"slug":"papas-wingeria","title":"Papa's Wingeria","swf":"papaswingeria_v2.swf","folder":"papaswingeria"},{"slug":"papas-pancakeria","title":"Papa's Pancakeria","swf":"papaspancakeria_v2.swf","folder":"papaspancakeria"},{"slug":"papas-freezeria","title":"Papa's Freezeria","swf":"papasfreezeria_v2.swf","folder":"papasfreezeria"},{"slug":"papas-taco-mia","title":"Papa's Taco Mia!","swf":"papastacomia_v2.swf","folder":"papastacomia"},{"slug":"papas-burgeria","title":"Papa's Burgeria","swf":"papasburgeria_v2.swf","folder":"papasburgeria"},{"slug":"papas-pizzeria","title":"Papa's Pizzeria","swf":"papaspizzeria_v2.swf","folder":"papaspizzeria"}]
+          with open("/tmp/papas.json", "w", encoding="utf-8") as f:
+              json.dump(games, f)
+          PY
+          while IFS=$'\t' read -r slug title folder swf; do
+            target="games/$slug"
+            mkdir -p "$target"
+            curl --fail --location --retry 3 "https://i.flipline.com/gamefiles/$folder/$swf" --output "$target/game.swf"
+            size=$(stat -c%s "$target/game.swf")
+            if [ "$size" -lt 100000 ] || [ "$size" -gt 26214400 ]; then
+              echo "Unexpected SWF size for $title: $size bytes"
+              exit 1
+            fi
+            cat > "$target/index.html" <<HTML
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <meta name="theme-color" content="#080808">
+            <title>$title</title>
+            <style>
+              * { box-sizing: border-box; }
+              html, body { width:100%; height:100%; margin:0; overflow:hidden; background:#080808; }
+              body { display:flex; align-items:center; justify-content:center; }
+              #game { width:100vw; height:100vh; }
+              ruffle-player { width:100%; height:100%; }
+            </style>
+          </head>
+          <body>
+            <div id="game"></div>
+            <script>
+              window.RufflePlayer = window.RufflePlayer || {};
+              window.RufflePlayer.config = {
+                autoplay: "on",
+                unmuteOverlay: "visible",
+                letterbox: "on",
+                backgroundColor: "#080808",
+                scale: "showAll",
+                forceScale: true,
+                logLevel: "error"
+              };
+            </script>
+            <script src="../ruffle/ruffle.js"></script>
+            <script>
+              window.addEventListener("load", () => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                player.style.width = "100%";
+                player.style.height = "100%";
+                document.getElementById("game").appendChild(player);
+                player.load("game.swf");
+              });
+            </script>
+          </body>
+          </html>
+          HTML
+            cat > "$target/ATTRIBUTION.md" <<NOTICE
+          # $title
+          
+          Original game and assets © Flipline Studios.
+          
+          This unmodified game file is the Standard Version made available by Flipline Studios for website hosting through its official “Free Games for your Site” programme:
+          https://www.flipline.com/freegames.html
+          
+          Flipline's terms state that downloads in the “Free Games for your Site” section may be hosted on your website. No sale or redistribution as a separate download is intended.
+          
+          Ruffle is used as the locally hosted Flash-compatible player; see ../ruffle/LICENSE.md.
+          NOTICE
+          done < <(python3 - <<'PY'
+          import json
+          for g in json.load(open("/tmp/papas.json", encoding="utf-8")):
+              print("\t".join([g["slug"],g["title"],g["folder"],g["swf"]]))
+          PY
+          )
+
+      - name: Commit all imported game files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add games/geometry-dash/
-          git commit -m "Add self-hosted Scratch Geometry Dash fan game" || echo "No file changes to commit."
+          git add games/
+          git commit -m "Add Scratch Geometry Dash and 14 authorized Papa's games" || echo "No file changes to commit."
           git push
