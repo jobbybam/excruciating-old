@@ -1,7 +1,7 @@
 {
-  "version": 4,
-  "source": "Only requested titles whose files are actually hosted in this repository; Sound Buttons Space is the explicitly requested outbound destination.",
-  "attribution": "The Scratch/TurboWarp fan game preserves its MIT licence and creator attribution. Sound Buttons Space remains its own service.",
+  "version": 5,
+  "source": "Self-hosted Scratch/TurboWarp fan game, 14 official Flipline standard downloads authorized for site hosting, and the specifically requested Sound Buttons Space destination.",
+  "attribution": "Each title retains its source-specific attribution and licence/hosting notice.",
   "games": [
     {
       "slug": "geometry-dash",
@@ -12,6 +12,160 @@
       "source_url": "https://github.com/AJ2130/Geometry-dash-",
       "license": "MIT",
       "attribution": "Ajaykrishna Ramesh (AJ2130). See games/geometry-dash/LICENSE and ATTRIBUTION.md.",
+      "published": true
+    },
+    {
+      "slug": "papas-scooperia",
+      "title": "Papa's Scooperia",
+      "category": "Simulation",
+      "description": "Official Papa's Scooperia Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-scooperia/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-sushiria",
+      "title": "Papa's Sushiria",
+      "category": "Simulation",
+      "description": "Official Papa's Sushiria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-sushiria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-bakeria",
+      "title": "Papa's Bakeria",
+      "category": "Simulation",
+      "description": "Official Papa's Bakeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-bakeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-cheeseria",
+      "title": "Papa's Cheeseria",
+      "category": "Simulation",
+      "description": "Official Papa's Cheeseria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-cheeseria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-donuteria",
+      "title": "Papa's Donuteria",
+      "category": "Simulation",
+      "description": "Official Papa's Donuteria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-donuteria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-pastaria",
+      "title": "Papa's Pastaria",
+      "category": "Simulation",
+      "description": "Official Papa's Pastaria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-pastaria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-cupcakeria",
+      "title": "Papa's Cupcakeria",
+      "category": "Simulation",
+      "description": "Official Papa's Cupcakeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-cupcakeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-hot-doggeria",
+      "title": "Papa's Hot Doggeria",
+      "category": "Simulation",
+      "description": "Official Papa's Hot Doggeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-hot-doggeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-wingeria",
+      "title": "Papa's Wingeria",
+      "category": "Simulation",
+      "description": "Official Papa's Wingeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-wingeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-pancakeria",
+      "title": "Papa's Pancakeria",
+      "category": "Simulation",
+      "description": "Official Papa's Pancakeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-pancakeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-freezeria",
+      "title": "Papa's Freezeria",
+      "category": "Simulation",
+      "description": "Official Papa's Freezeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-freezeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-taco-mia",
+      "title": "Papa's Taco Mia!",
+      "category": "Simulation",
+      "description": "Official Papa's Taco Mia! Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-taco-mia/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-burgeria",
+      "title": "Papa's Burgeria",
+      "category": "Simulation",
+      "description": "Official Papa's Burgeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-burgeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
+      "published": true
+    },
+    {
+      "slug": "papas-pizzeria",
+      "title": "Papa's Pizzeria",
+      "category": "Simulation",
+      "description": "Official Papa's Pizzeria Flash game, hosted locally with Ruffle under Flipline Studios' Free Games for your Site permission.",
+      "url": "/games/papas-pizzeria/index.html",
+      "source_url": "https://www.flipline.com/freegames.html",
+      "license": "Flipline Studios — Free Games for your Site hosting permission",
+      "attribution": "© Flipline Studios. Official Standard Version supplied for website hosting.",
       "published": true
     },
     {
