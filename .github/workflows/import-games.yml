@@ -85,6 +85,7 @@ jobs:
             target="games/$slug"
             mkdir -p "$target"
             curl --fail --location --retry 3 "https://i.flipline.com/gamefiles/$folder/$swf" --output "$target/game.swf"
+            curl --fail --location --retry 3 "https://i.flipline.com/gamefiles/$folder/images/gameicon.jpg" --output "$target/thumbnail.jpg"
             size=$(stat -c%s "$target/game.swf")
             if [ "$size" -lt 100000 ] || [ "$size" -gt 26214400 ]; then
               echo "Unexpected SWF size for $title: $size bytes"
@@ -154,11 +155,27 @@ jobs:
           PY
           )
 
+      - name: Add official game icons to the catalogue
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("catalog/games.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          for game in data["games"]:
+              if game["slug"].startswith("papas-"):
+                  icon = Path("games") / game["slug"] / "thumbnail.jpg"
+                  if icon.is_file() and icon.stat().st_size > 1000:
+                      game["thumbnail"] = f"/games/{game['slug']}/thumbnail.jpg"
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
       - name: Commit all imported game files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add games/
+          git add games/ catalog/games.json
           git commit -m "Add Scratch Geometry Dash and 14 authorized Papa's games" || echo "No file changes to commit."
           git fetch origin main
           git rebase origin/main
