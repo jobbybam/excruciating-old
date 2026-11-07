@@ -324,6 +324,76 @@
       #pauseMenu button[hidden] {
         display: none;
       }
+    
+      /* Touch controls are hidden on desktop and shown only on touch-first devices. */
+      #undertale-mobile-controls {
+        display: none;
+        position: fixed;
+        inset: auto 0 max(14px, env(safe-area-inset-bottom)) 0;
+        z-index: 99999;
+        padding: 0 max(18px, env(safe-area-inset-right)) 0 max(18px, env(safe-area-inset-left));
+        align-items: end;
+        justify-content: space-between;
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      #undertale-mobile-controls .ut-stick,
+      #undertale-mobile-controls .ut-actions { pointer-events: auto; touch-action: none; }
+      #undertale-mobile-controls .ut-stick {
+        width: 142px; height: 142px; border-radius: 50%;
+        border: 2px solid rgba(255,255,255,.48);
+        background: radial-gradient(circle at 35% 30%, rgba(90,90,100,.78), rgba(18,18,24,.84));
+        box-shadow: 0 6px 22px rgba(0,0,0,.55), inset 0 0 18px rgba(255,255,255,.08);
+        position: relative; display: grid; place-items: center;
+      }
+      #undertale-mobile-controls .ut-stick::before {
+        content: ""; position: absolute; inset: 36px; border-radius: 50%;
+        border: 1px solid rgba(255,255,255,.13);
+      }
+      #undertale-mobile-controls .ut-knob {
+        width: 62px; height: 62px; border-radius: 50%;
+        border: 2px solid rgba(255,255,255,.8);
+        background: linear-gradient(145deg, #555761, #20212a);
+        box-shadow: 0 4px 12px rgba(0,0,0,.5);
+        transform: translate(0,0);
+        position: relative; z-index: 1;
+      }
+      #undertale-mobile-controls .ut-actions {
+        display: grid; grid-template-columns: repeat(2, 66px);
+        grid-template-rows: repeat(2, 66px); gap: 12px;
+        align-items: center; justify-items: center; padding-bottom: 8px;
+      }
+      #undertale-mobile-controls button {
+        width: 66px; height: 66px; border-radius: 50%;
+        border: 2px solid rgba(255,255,255,.72);
+        color: #fff; font: 800 23px/1 Arial,sans-serif;
+        background: radial-gradient(circle at 35% 25%, #5b5b66, #22232b 72%);
+        box-shadow: 0 5px 15px rgba(0,0,0,.55), inset 0 1px 5px rgba(255,255,255,.16);
+        -webkit-tap-highlight-color: transparent; touch-action: none;
+      }
+      #undertale-mobile-controls button:active,
+      #undertale-mobile-controls button.is-pressed {
+        transform: scale(.94);
+        background: radial-gradient(circle at 35% 25%, #888, #393943 72%);
+        border-color: #fff;
+      }
+      #undertale-mobile-controls button[data-key="KeyZ"] { grid-column: 2; grid-row: 1; background-color: #8e252d; }
+      #undertale-mobile-controls button[data-key="KeyX"] { grid-column: 1; grid-row: 2; }
+      #undertale-mobile-controls button[data-key="KeyC"] { grid-column: 2; grid-row: 2; }
+      @media (pointer: coarse) and (hover: none) {
+        #undertale-mobile-controls { display: flex; }
+        .output-container { display: none !important; }
+        #undertale-mobile-controls button { font-size: 22px; }
+      }
+      @media (pointer: coarse) and (hover: none) and (max-height: 430px) {
+        #undertale-mobile-controls .ut-stick { width: 116px; height: 116px; }
+        #undertale-mobile-controls .ut-stick::before { inset: 29px; }
+        #undertale-mobile-controls .ut-knob { width: 52px; height: 52px; }
+        #undertale-mobile-controls .ut-actions { grid-template-columns: repeat(2, 56px); grid-template-rows: repeat(2, 56px); gap: 8px; }
+        #undertale-mobile-controls button { width: 56px; height: 56px; }
+      }
+
     </style>
   </head>
   <body>
@@ -951,5 +1021,130 @@
       });
     </script>
 	<script async type="text/javascript" src="runner.js"></script>
+  
+    <div id="undertale-mobile-controls" aria-label="Undertale touch controls">
+      <div class="ut-stick" id="ut-stick" role="application" aria-label="Movement joystick">
+        <div class="ut-knob" id="ut-knob"></div>
+      </div>
+      <div class="ut-actions" aria-label="Action buttons">
+        <button type="button" data-key="KeyZ" aria-label="Z confirm">Z</button>
+        <button type="button" data-key="KeyX" aria-label="X cancel">X</button>
+        <button type="button" data-key="KeyC" aria-label="C special">C</button>
+      </div>
+    </div>
+    <script>
+    (() => {
+      const root = document.getElementById("undertale-mobile-controls");
+      const canvas = document.getElementById("canvas");
+      const stick = document.getElementById("ut-stick");
+      const knob = document.getElementById("ut-knob");
+      if (!root || !stick || !knob || !canvas) return;
+
+      const keyInfo = {
+        ArrowUp: { key: "ArrowUp", code: "ArrowUp", keyCode: 38 },
+        ArrowDown: { key: "ArrowDown", code: "ArrowDown", keyCode: 40 },
+        ArrowLeft: { key: "ArrowLeft", code: "ArrowLeft", keyCode: 37 },
+        ArrowRight: { key: "ArrowRight", code: "ArrowRight", keyCode: 39 },
+        KeyZ: { key: "z", code: "KeyZ", keyCode: 90 },
+        KeyX: { key: "x", code: "KeyX", keyCode: 88 },
+        KeyC: { key: "c", code: "KeyC", keyCode: 67 }
+      };
+      const held = new Set();
+
+      function emit(code, down) {
+        const info = keyInfo[code];
+        if (!info || (down && held.has(code)) || (!down && !held.has(code))) return;
+        if (down) held.add(code); else held.delete(code);
+        try { canvas.focus({ preventScroll: true }); } catch (_) { canvas.focus(); }
+        const event = new KeyboardEvent(down ? "keydown" : "keyup", {
+          key: info.key, code: info.code, bubbles: true, cancelable: true
+        });
+        try {
+          Object.defineProperty(event, "keyCode", { get: () => info.keyCode });
+          Object.defineProperty(event, "which", { get: () => info.keyCode });
+        } catch (_) {}
+        canvas.dispatchEvent(event);
+      }
+
+      function setDirections(next) {
+        for (const code of ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"]) {
+          emit(code, next.has(code));
+        }
+      }
+
+      let activePointer = null;
+      function updateStick(event) {
+        const rect = stick.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        let dx = event.clientX - cx;
+        let dy = event.clientY - cy;
+        const max = rect.width * 0.29;
+        const length = Math.hypot(dx, dy);
+        if (length > max) { dx = dx / length * max; dy = dy / length * max; }
+        knob.style.transform = "translate(" + dx + "px," + dy + "px)";
+        const dead = rect.width * 0.19;
+        const directions = new Set();
+        if (Math.abs(dx) > dead) directions.add(dx < 0 ? "ArrowLeft" : "ArrowRight");
+        if (Math.abs(dy) > dead) directions.add(dy < 0 ? "ArrowUp" : "ArrowDown");
+        setDirections(directions);
+      }
+      function resetStick() {
+        activePointer = null;
+        knob.style.transform = "translate(0,0)";
+        setDirections(new Set());
+      }
+      stick.addEventListener("pointerdown", event => {
+        event.preventDefault();
+        activePointer = event.pointerId;
+        stick.setPointerCapture(event.pointerId);
+        updateStick(event);
+      });
+      stick.addEventListener("pointermove", event => {
+        if (event.pointerId !== activePointer) return;
+        event.preventDefault();
+        updateStick(event);
+      });
+      stick.addEventListener("pointerup", event => {
+        if (event.pointerId === activePointer) resetStick();
+      });
+      stick.addEventListener("pointercancel", resetStick);
+      stick.addEventListener("lostpointercapture", resetStick);
+
+      root.querySelectorAll("button[data-key]").forEach(button => {
+        let pointer = null;
+        const code = button.dataset.key;
+        button.addEventListener("pointerdown", event => {
+          event.preventDefault();
+          pointer = event.pointerId;
+          button.setPointerCapture(event.pointerId);
+          button.classList.add("is-pressed");
+          emit(code, true);
+        });
+        const release = event => {
+          if (pointer === null || (event && event.pointerId !== undefined && event.pointerId !== pointer)) return;
+          pointer = null;
+          button.classList.remove("is-pressed");
+          emit(code, false);
+        };
+        button.addEventListener("pointerup", release);
+        button.addEventListener("pointercancel", release);
+        button.addEventListener("lostpointercapture", release);
+        button.addEventListener("contextmenu", event => event.preventDefault());
+      });
+
+      function releaseAll() {
+        for (const code of Array.from(held)) emit(code, false);
+        resetStick();
+        root.querySelectorAll("button.is-pressed").forEach(button => button.classList.remove("is-pressed"));
+      }
+      window.addEventListener("blur", releaseAll);
+      document.addEventListener("visibilitychange", () => { if (document.hidden) releaseAll(); });
+      document.addEventListener("contextmenu", event => {
+        if (root.contains(event.target)) event.preventDefault();
+      });
+    })();
+    </script>
+
   </body>
 </html>
