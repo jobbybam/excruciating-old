@@ -12,7 +12,8 @@
       "source_url": "https://github.com/AJ2130/Geometry-dash-",
       "license": "MIT",
       "attribution": "Ajaykrishna Ramesh (AJ2130). See games/geometry-dash/LICENSE and ATTRIBUTION.md.",
-      "published": true
+      "published": true,
+      "thumbnail": "/games/geometry-dash/thumbnail.svg"
     },
     {
       "slug": "undertale",
