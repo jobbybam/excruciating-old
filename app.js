@@ -11,20 +11,23 @@ async function api(url,options={}){
   return data;
 }
 async function loadGames(){
+  let catalogue=[];
+  try{
+    const response=await fetch("/catalog/games.json",{cache:"no-store"});
+    if(!response.ok)throw new Error("Static catalogue returned "+response.status);
+    const data=await response.json();
+    catalogue=Array.isArray(data.games)?data.games.filter(game=>game.published!==false):[];
+  }catch(error){
+    console.error("Static 3kh0 catalogue unavailable.",error);
+  }
   try{
     const data=await api("/api/games");
-    state.games=Array.isArray(data.games)?data.games:[];
+    const known=new Set(catalogue.map(game=>game.slug));
+    const custom=(Array.isArray(data.games)?data.games:[]).filter(game=>!known.has(game.slug));
+    state.games=[...catalogue,...custom];
   }catch(error){
-    console.error("D1 game catalogue unavailable; trying the static GitHub catalogue.",error);
-    try{
-      const response=await fetch("/catalog/games.json",{cache:"no-store"});
-      if(!response.ok)throw new Error("Static catalogue returned "+response.status);
-      const data=await response.json();
-      state.games=Array.isArray(data.games)?data.games.filter(game=>game.published!==false):[];
-    }catch(fallbackError){
-      console.error("Static game catalogue could not be loaded.",fallbackError);
-      state.games=[];
-    }
+    console.error("D1 game catalogue unavailable; using the static catalogue.",error);
+    state.games=catalogue;
   }
   render();
 }
@@ -35,7 +38,7 @@ function render(){
   for(const game of visible){
     const button=document.createElement("button");button.className="game-card";button.type="button";button.addEventListener("click",()=>openGame(game));
     const thumb=document.createElement("span");thumb.className="game-thumb";
-    if(game.thumbnail){const img=document.createElement("img");img.src=game.thumbnail;img.alt="";img.loading="lazy";thumb.append(img);}
+    if(game.thumbnail){const img=document.createElement("img");img.src=game.thumbnail;img.alt="";img.loading="lazy";img.onerror=()=>{const fallback=document.createElement("span");fallback.className="game-placeholder";fallback.textContent=(game.title||"?").slice(0,1).toUpperCase();thumb.replaceChildren(fallback);};thumb.append(img);}
     else{const fallback=document.createElement("span");fallback.className="game-placeholder";fallback.textContent=(game.title||"?").slice(0,1).toUpperCase();thumb.append(fallback);}
     const title=document.createElement("span");title.className="game-name";title.textContent=game.title;
     const category=document.createElement("span");category.className="game-category";category.textContent=game.category||"";
@@ -45,11 +48,11 @@ function render(){
 function openGame(game){
   if(!game||!game.slug)return;
   home.hidden=true;player.hidden=false;$("#search-wrap").hidden=true;$("#chat-toggle").hidden=true;playerTitle.textContent=game.title;
-  placeholder.hidden=true;frame.hidden=false;frame.src="/games/"+encodeURIComponent(game.slug)+"/index.html";
+  placeholder.hidden=true;frame.hidden=false;frame.dataset.gameUrl=game.url||game.launch_url||("/games/"+encodeURIComponent(game.slug)+"/index.html");frame.src=frame.dataset.gameUrl;
   history.pushState({game:game.slug},"","#play/"+encodeURIComponent(game.slug));
 }
 function closeGame(){
-  frame.src="about:blank";frame.hidden=true;placeholder.hidden=false;player.hidden=true;
+  frame.src="about:blank";frame.dataset.gameUrl="";frame.hidden=true;placeholder.hidden=false;player.hidden=true;
   $("#search-wrap").hidden=isAdminRoute;$("#chat-toggle").hidden=isAdminRoute;home.hidden=isAdminRoute;
   if(location.hash.startsWith("#play/"))history.pushState({},"",location.pathname+location.search);
 }
@@ -60,7 +63,7 @@ $("#categories").addEventListener("click",e=>{
 });
 $("#back-button").addEventListener("click",closeGame);
 $("#reload-button").addEventListener("click",()=>{if(frame.src)frame.src=frame.src;});
-$("#fullscreen-button").addEventListener("click",()=>{if(frame.requestFullscreen)frame.requestFullscreen();});
+$("#open-game-button").addEventListener("click",()=>{const url=frame.dataset.gameUrl||frame.src;if(url&&url!=="about:blank")window.open(url,"_blank","noopener,noreferrer");});
 window.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement.tagName!=="INPUT"&&document.activeElement.tagName!=="TEXTAREA"){e.preventDefault();$("#search").focus();}if(e.key==="Escape"&&!player.hidden)closeGame();});
 window.addEventListener("popstate",()=>{if(!location.hash.startsWith("#play/")&&!player.hidden)closeGame();});
 
