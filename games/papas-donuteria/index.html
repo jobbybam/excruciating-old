@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>Papa's Donuteria</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width:100%; height:100%; margin:0; overflow:hidden; background:#080808; }
+    body { display:flex; align-items:center; justify-content:center; }
+    #game { width:100vw; height:100vh; }
+    ruffle-player { width:100%; height:100%; }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+      autoplay: "on",
+      unmuteOverlay: "visible",
+      letterbox: "on",
+      backgroundColor: "#080808",
+      scale: "showAll",
+      forceScale: true,
+      logLevel: "error"
+    };
+  </script>
+  <script src="../ruffle/ruffle.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+      player.style.width = "100%";
+      player.style.height = "100%";
+      document.getElementById("game").appendChild(player);
+      player.load("game.swf");
+    });
+  </script>
+</body>
+</html>
