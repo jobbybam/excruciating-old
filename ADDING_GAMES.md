@@ -31,15 +31,22 @@ The folder name is the slug. Use lowercase letters, numbers and hyphens only, fo
 
 ## 3. Upload to this repository
 
-**Using GitHub in your browser:**
+**For a single-file HTML game (GitHub in your browser):**
 
 1. Open https://github.com/jobbybam/excruciating.
-2. Open the `games` folder.
-3. Choose **Add file → Upload files**.
-4. Upload the contents of your new game folder under `games/my-new-game/`. Keep subfolders and relative paths intact.
-5. Commit the upload to `main`.
+2. Choose **Add file → Create new file**.
+3. In the filename box, enter `games/my-new-game/index.html`.
+4. Paste the complete HTML game source.
+5. Commit the new file to `main`.
 
-For games with many nested assets, GitHub Desktop is often easier: clone the repository, copy your complete game folder into `games/`, then commit and push.
+**For a game with multiple files/assets (recommended):**
+
+1. Install/open GitHub Desktop and clone `jobbybam/excruciating`.
+2. On your computer, copy the complete extracted game folder into the repository's `games/` folder, naming it `my-new-game`.
+3. Check that `games/my-new-game/index.html` exists and all asset subfolders are present.
+4. In GitHub Desktop, commit the changes and push to `main`.
+
+Do not flatten the folder or rename asset files: preserve the structure expected by the game's HTML/CSS/JavaScript.
 
 ## 4. Publish it on the website
 
