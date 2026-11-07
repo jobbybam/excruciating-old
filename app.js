@@ -23,7 +23,7 @@ async function loadGames(){
   try{
     const data=await api("/api/games");
     const known=new Set(catalogue.map(game=>game.slug));
-    const custom=(Array.isArray(data.games)?data.games:[]).filter(game=>!known.has(game.slug));
+    const custom=(Array.isArray(data.games)?data.games:[]).filter(game=>!known.has(game.slug)&&!String(game.source_url||"").includes("mashukui/web-games"));
     state.games=[...catalogue,...custom];
   }catch(error){
     console.error("D1 game catalogue unavailable; using the static catalogue.",error);
