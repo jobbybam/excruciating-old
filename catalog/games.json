@@ -4502,6 +4502,18 @@
       "license": "Varies by game",
       "attribution": "3kh0 archive; see the source repository for original credits and game-specific terms.",
       "published": true
+    },
+    {
+      "slug": "brick-breaker",
+      "title": "Brick Breaker",
+      "category": "Arcade",
+      "thumbnail": "",
+      "description": "Neon brick-breaking arcade game. Mouse, keyboard and touchscreen controls.",
+      "url": "/games/brick-breaker/index.html",
+      "source_url": "https://github.com/samecchang/BrickBreaker",
+      "license": "MIT",
+      "attribution": "Original game by Sam Chang; MIT licence included in this folder.",
+      "published": true
     }
   ]
 }
