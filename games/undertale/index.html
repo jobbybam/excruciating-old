@@ -1079,14 +1079,32 @@
         const cy = rect.top + rect.height / 2;
         let dx = event.clientX - cx;
         let dy = event.clientY - cy;
-        const max = rect.width * 0.29;
+        // Keep the joystick's visual travel separate from its input deadzone.
+        // The previous per-axis deadzone was almost as large as the diagonal
+        // component of a full throw, so diagonal input only registered at a
+        // tiny set of angles near the outer edge.
+        const max = rect.width * 0.31;
         const length = Math.hypot(dx, dy);
-        if (length > max) { dx = dx / length * max; dy = dy / length * max; }
+        if (length > max) {
+          dx = dx / length * max;
+          dy = dy / length * max;
+        }
         knob.style.transform = "translate(" + dx + "px," + dy + "px)";
-        const dead = rect.width * 0.19;
+
+        const magnitude = Math.hypot(dx, dy);
+        const deadzone = max * 0.14;
+        const axisThreshold = max * 0.24;
         const directions = new Set();
-        if (Math.abs(dx) > dead) directions.add(dx < 0 ? "ArrowLeft" : "ArrowRight");
-        if (Math.abs(dy) > dead) directions.add(dy < 0 ? "ArrowUp" : "ArrowDown");
+        if (magnitude > deadzone) {
+          // Test both axes independently. Diagonals are intentionally allowed;
+          // holding two directions at once is how the game receives diagonals.
+          if (Math.abs(dx) > axisThreshold) {
+            directions.add(dx < 0 ? "ArrowLeft" : "ArrowRight");
+          }
+          if (Math.abs(dy) > axisThreshold) {
+            directions.add(dy < 0 ? "ArrowUp" : "ArrowDown");
+          }
+        }
         setDirections(directions);
       }
       function resetStick() {
